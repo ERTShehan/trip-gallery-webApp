@@ -1,5 +1,5 @@
-// API Gateway base URL — change to GCP URL when deployed
-export const API_GATEWAY_URL = 'http://localhost:8080';
+// API Gateway base URL — empty string allows relative path routing via GCP Load Balancer
+export const API_GATEWAY_URL = '';
 
 export const API_ENDPOINTS = {
   trips: `${API_GATEWAY_URL}/trip-service/trips`,
