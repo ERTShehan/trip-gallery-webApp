@@ -1,75 +1,17 @@
-# React + TypeScript + Vite
+# Cloud Trip Gallery - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
+The **Frontend** application serves as the user interface for the Cloud Trip Gallery system. It provides an intuitive, responsive, and dynamic experience for users to manage their trips, document travel logs, and upload photos.
 
-Currently, two official plugins are available:
+## Technical Details
+* **Technology Stack**: React, TypeScript, Vite, Node.js
+* **Styling**: Modern CSS / Tailwind (depending on configuration)
+* **API Integration**: Uses Axios to communicate with the backend microservices through the centralized API Gateway.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Key Responsibilities
+* **User Interface**: Renders trip dashboards, log entry forms, and media upload interfaces.
+* **Client-Side Routing**: Manages navigation seamlessly without page reloads.
+* **State Management**: Handles UI state and asynchronous API data fetching.
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
+## Deployment Context
+In the GCP production environment, the frontend is built into static assets (HTML/CSS/JS) and hosted on a **Google Cloud Storage Bucket**. It is served globally via a dedicated **Global External Application Load Balancer** (`34.95.86.121`), ensuring high availability, caching, and low latency for users worldwide. It securely communicates with the backend APIs via CORS-enabled Load Balancer routing.
