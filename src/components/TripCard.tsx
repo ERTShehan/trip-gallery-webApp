@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import type { Trip } from '../types';
-import { MapPin, DollarSign, Trash2, ArrowRight, Image as ImageIcon } from 'lucide-react';
+import { MapPin, DollarSign, Trash2, ArrowRight } from 'lucide-react';
 
 interface TripCardProps {
   trip: Trip;

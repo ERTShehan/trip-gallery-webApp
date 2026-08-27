@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import type { Trip, TravelLog, UploadResponse } from '../types';
+import type { Trip, TravelLog, } from '../types';
 import { tripApi, travelLogApi, mediaApi } from '../services/api';
 import { ArrowLeft, MapPin, DollarSign, Edit2, Image as ImageIcon, Upload, Plus, Trash2, Loader2, Save, X } from 'lucide-react';
 import Swal from 'sweetalert2';
@@ -13,7 +13,6 @@ export default function TripDetails() {
   const [trip, setTrip] = useState<Trip | null>(null);
   const [logs, setLogs] = useState<TravelLog[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
   // Edit Trip State
   const [isEditing, setIsEditing] = useState(false);
@@ -34,7 +33,6 @@ export default function TripDetails() {
   const fetchAllData = async () => {
     try {
       setLoading(true);
-      setError(null);
       const tripId = parseInt(id!);
       const [tripRes, logsRes] = await Promise.all([
         tripApi.getById(tripId),
@@ -44,7 +42,6 @@ export default function TripDetails() {
       setEditData(tripRes.data);
       setLogs(logsRes.data);
     } catch {
-      setError('Failed to load trip details.');
       toast.error('Failed to load data!');
     } finally {
       setLoading(false);
