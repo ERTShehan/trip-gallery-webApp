@@ -1,5 +1,5 @@
-// API Gateway base URL — empty string allows relative path routing via GCP Load Balancer
-export const API_GATEWAY_URL = '';
+// API Gateway Load Balancer IP (GCP, provisioned via Phase 21)
+export const API_GATEWAY_URL = 'http://35.201.108.108';
 
 export const API_ENDPOINTS = {
   trips: `${API_GATEWAY_URL}/trip-service/trips`,
